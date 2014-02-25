@@ -43,7 +43,6 @@ void ExampleObject::draw()
 	glRectf(-0.5, -0.5, 0.5, 0.5);   
 	glPopMatrix();
 
-
 	/*
 	glBegin(GL_QUADS);
 		glVertex3d(0,0,0);
@@ -58,6 +57,4 @@ void ExampleObject::draw()
 		glVertex3d(-1,3,0);
 	glEnd();
 	*/
-
-
 }

@@ -1,6 +1,8 @@
 #include "TPscene.h"
 #include "CGFaxis.h"
 #include "CGFapplication.h"
+#include "Table.h"
+#include "Floor.h"
 
 #include <math.h>
 
@@ -11,8 +13,9 @@ float deg2rad=pi/180.0;
 
 CGFappearance *mat1;
 //ExampleObject myObject;
-ExampleObject myUnitCube;
-ExampleObject myTable;
+//ExampleObject myUnitCube;
+Table myTable;
+Floor myFloor;
 
 void TPscene::init() 
 {
@@ -99,8 +102,8 @@ void TPscene::display()
 	//glRotated(30.0,0.0,1.0,0.0);
 	// glMultMatrixf(sca);     // GT = GT * sca
 	
-
 	*/
+	
 	// ---- END Geometric transformation section
 	
 
@@ -112,6 +115,7 @@ void TPscene::display()
 	//myObject.draw();
 	//myUnitCube.draw();
 	myTable.draw();
+	myFloor.draw();
 
 	// ---- END Primitive drawing section
 
@@ -119,4 +123,8 @@ void TPscene::display()
 	// while the graphics card is showing the contents of another buffer - the front buffer
 	// glutSwapBuffers() will swap pointers so that the back buffer becomes the front buffer and vice-versa
 	glutSwapBuffers();
+}
+
+void TPscene::draw(){
+
 }

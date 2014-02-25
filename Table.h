@@ -5,7 +5,6 @@
 
 class Table: public CGFobject {
 	public:
-		ExampleObject myUnitCube;
 		void draw();
 };
 
