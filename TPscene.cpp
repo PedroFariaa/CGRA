@@ -3,6 +3,7 @@
 #include "CGFapplication.h"
 #include "myTable.h"
 #include "myFloor.h"
+#include "myChair.h"
 
 #include <math.h>
 
@@ -16,6 +17,7 @@ CGFappearance *mat1;
 //ExampleObject myUnitCube;
 myTable Table;
 myFloor Floor;
+myChair Chair;
 
 void TPscene::init() 
 {
@@ -114,8 +116,29 @@ void TPscene::display()
 	
 	//myObject.draw();
 	//myUnitCube.draw();
-	Table.draw();
+
+	this->draw();
+	glPushMatrix();
+	glScaled(4.0, 1.0, 4.0);
+	glTranslated(3.0, 0.0, 2.25);
 	Floor.draw();
+	glPopMatrix();
+
+	glTranslated(-8.0, 0.0, -5.0);
+	for(unsigned int i=0; i<4; i++){
+		glTranslated(8.0, 0.0, 0.0);
+		glPushMatrix();
+		for(unsigned int j=0; j<4; j++){
+			glTranslated(0.0, 0.0, 5.0);
+			glPushMatrix();
+			glTranslated(0.0, 0.0, -1.5);
+			Chair.draw();
+			glPopMatrix();
+			Table.draw();
+		}
+		glPopMatrix();
+	}
+	
 
 	// ---- END Primitive drawing section
 
@@ -123,4 +146,8 @@ void TPscene::display()
 	// while the graphics card is showing the contents of another buffer - the front buffer
 	// glutSwapBuffers() will swap pointers so that the back buffer becomes the front buffer and vice-versa
 	glutSwapBuffers();
+}
+
+void TPscene::draw(){
+	glTranslated(4.0, -0.05, 3.0);
 }
