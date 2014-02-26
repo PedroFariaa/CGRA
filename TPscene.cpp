@@ -1,8 +1,8 @@
 #include "TPscene.h"
 #include "CGFaxis.h"
 #include "CGFapplication.h"
-#include "Table.h"
-#include "Floor.h"
+#include "myTable.h"
+#include "myFloor.h"
 
 #include <math.h>
 
@@ -14,8 +14,8 @@ float deg2rad=pi/180.0;
 CGFappearance *mat1;
 //ExampleObject myObject;
 //ExampleObject myUnitCube;
-Table myTable;
-Floor myFloor;
+myTable Table;
+myFloor Floor;
 
 void TPscene::init() 
 {
@@ -114,8 +114,8 @@ void TPscene::display()
 	
 	//myObject.draw();
 	//myUnitCube.draw();
-	myTable.draw();
-	myFloor.draw();
+	Table.draw();
+	Floor.draw();
 
 	// ---- END Primitive drawing section
 
@@ -123,8 +123,4 @@ void TPscene::display()
 	// while the graphics card is showing the contents of another buffer - the front buffer
 	// glutSwapBuffers() will swap pointers so that the back buffer becomes the front buffer and vice-versa
 	glutSwapBuffers();
-}
-
-void TPscene::draw(){
-
 }
