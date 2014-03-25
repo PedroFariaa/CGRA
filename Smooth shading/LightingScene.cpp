@@ -3,6 +3,7 @@
 #include "CGFapplication.h"
 #include "myTable.h"
 #include "Plane.h"
+#include "myCylinder.h"
 
 #include <math.h>
 
@@ -92,6 +93,8 @@ void LightingScene::init()
 	 glEnable (GL_NORMALIZE);
 
 	//Declares scene elements
+	cyl_f = new myCylinder(10, 4, false);
+	cyl = new myCylinder(10, 4, true);
 	table = new myTable();
 	wall = new Plane();
 	boardA = new Plane(BOARD_A_DIVISIONS);
@@ -129,7 +132,19 @@ void LightingScene::display()
 	// ---- END Background, camera and axis setup
 
 	// ---- BEGIN Primitive drawing section
+	
+	// cylinder with smooth shading
+	glPushMatrix();
+		cyl->draw();
+	glPopMatrix();
 
+	// cylinder with flat shading
+	glPushMatrix();
+		glTranslated(4, 0, 0);
+		cyl_f->draw();
+	glPopMatrix();
+
+	/*
 	//First Table
 	glPushMatrix();
 		glTranslated(5,0,8);
@@ -184,7 +199,7 @@ void LightingScene::display()
 		materialB->apply();
 		boardB->draw();
 	glPopMatrix();
-	
+	*/
 	// ---- END Primitive drawing section
 	
 
@@ -201,6 +216,8 @@ LightingScene::~LightingScene()
 	delete(light2);
 	delete(light3);
 
+	delete(cyl_f);
+	delete(cyl);
 	delete(table);
 	delete(wall);
 	delete(boardA);

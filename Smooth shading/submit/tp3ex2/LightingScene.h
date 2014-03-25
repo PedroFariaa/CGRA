@@ -5,6 +5,7 @@
 #include "CGFappearance.h"
 #include "myTable.h"
 #include "Plane.h"
+#include "myCylinder.h"
 
 class LightingScene : public CGFscene
 {
@@ -17,6 +18,8 @@ public:
 	CGFlight* light2;
 	CGFlight* light3;
 
+	myCylinder* cyl_f;
+	myCylinder* cyl;
 	myTable* table;
 	Plane* wall;
 	Plane* boardA;
