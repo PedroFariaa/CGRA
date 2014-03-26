@@ -6,6 +6,7 @@
 #include "myTable.h"
 #include "Plane.h"
 #include "myCylinder.h"
+#include "myLamp.h"
 
 class LightingScene : public CGFscene
 {
@@ -18,6 +19,7 @@ public:
 	CGFlight* light2;
 	CGFlight* light3;
 
+	myLamp* lamp;
 	myCylinder* cyl_f;
 	myCylinder* cyl;
 	myTable* table;
