@@ -153,7 +153,8 @@ void LightingScene::init(){
 	boardA = new Plane(BOARD_A_DIVISIONS, 0, 0, 1, 1);
 	boardB = new Plane(BOARD_B_DIVISIONS, 0,-0.14,1,1.14);
 	robot = new myRobot(5.0,0.1,5.0,0,8);
-
+	impostor = new Plane(0, 0, 1, 1);
+	window = new Window();
 
 	//Declares materials
 	//materialA = new CGFappearance(ambA,difA,specA,shininessA);
@@ -175,6 +176,8 @@ void LightingScene::init(){
 	wallAppearance->setTexture("wall.png");
 	clockAppearance = new CGFappearance(ambTable, difTable, specTable, shininessTable);
 	clockAppearance->setTexture("clock.png");
+	impostorAppearance = new CGFappearance(ambTable, difTable, specTable, shininessTable);
+	impostorAppearance->setTexture("impostor.jpg");
 
 	robotAppearance = new CGFappearance(ambTable, difTable, specTable, shininessTable);
 
@@ -302,6 +305,7 @@ void LightingScene::display(){
 	glPopMatrix();
 
 	//LeftWall
+	/*
 	glPushMatrix();
 	windowAppearance->apply();
 	glTranslated(0,4,7.5);
@@ -310,17 +314,42 @@ void LightingScene::display(){
 	glRotated(90, 0, 1, 0);
 	wall->draw();
 	glPopMatrix();
+	*/
 
+	//window
+	/*
+	glPushMatrix();
+	windowAppearance->apply();
+	glTranslated(0,4,7.5);
+	//glRotated(-90.0,0,0,1);
+	glScaled(8,0.2,15);
+	//glRotated(90, 0, 1, 0);
+	window->draw();
+	glPopMatrix();
+	*/
 
-
-
-	boardAppearance->apply();
+	//Desenha o buraco tapado
+	windowAppearance->apply();
+	/*
+	glPushMatrix();
+	windowAppearance->apply();
+	glTranslated(0,4,7.5);
+	glRotated(-90.0,0,0,1);
+	glScaled(8/3,0.2,15/3);
+	glRotated(90, 0, 1, 0);
+	wall->draw();
+	glPopMatrix();
+	*/
+	glPushMatrix();
+	window->draw();
+	glPopMatrix();
+	
 	// Board A
+	boardAppearance->apply();
 	glPushMatrix();
 	glTranslated(4,4,0.2);
 	glScaled(BOARD_WIDTH,BOARD_HEIGHT,1);
 	glRotated(90.0,1,0,0);
-	//materialA->apply();
 	boardA->draw();
 	glPopMatrix();
 
@@ -330,7 +359,6 @@ void LightingScene::display(){
 	glTranslated(10.5,4,0.2);
 	glScaled(BOARD_WIDTH,BOARD_HEIGHT,1);
 	glRotated(90.0,1,0,0);
-	//materialB->apply();
 	boardB->draw();
 	glPopMatrix();
 
@@ -348,6 +376,17 @@ void LightingScene::display(){
 	glTranslated(7.25, 7.5, 0);
 	clockAppearance->apply();
 	clock->draw();
+	glPopMatrix();
+
+	//impostor
+	glPushMatrix();
+	glTranslated(-12,0,0);
+	glTranslated(0,4,7.5);
+	glRotated(-90,0,0,1);
+	glScaled(12,0.2,20);
+	glRotated(90, 0, 1, 0);
+	impostorAppearance->apply();
+	impostor->draw();
 	glPopMatrix();
 
 	// ---- END Primitive drawing section
