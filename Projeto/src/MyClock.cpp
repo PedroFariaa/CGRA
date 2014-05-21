@@ -2,6 +2,8 @@
 #include "MyClockHand.h"
 #include <iostream>
 
+#define pi acos(-1.0)
+
 myClock::myClock(){
 	myCylinder* cylinder = new myCylinder(12, 1, true);
 	this->cyl=cylinder;
@@ -40,8 +42,8 @@ void myClock::draw(){
 }
 
 void myClock::update(unsigned long millisegundos){
-	float ms = (float) 6*millisegundos/2000000000;
-	this->ponteiro_horas->setAngle(ponteiro_horas->getAngle()-ms/3600);
-	this->ponteiro_minutos->setAngle(ponteiro_minutos->getAngle()-ms/60);
-	this->ponteiro_segundos->setAngle(ponteiro_segundos->getAngle()-ms);
+	float ms = (float) millisegundos/250;
+	this->ponteiro_horas->setAngle(-ms/3600);
+	this->ponteiro_minutos->setAngle(-ms/60);
+	this->ponteiro_segundos->setAngle( -ms);
 }

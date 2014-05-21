@@ -49,17 +49,16 @@ void TPinterface::initGUI(){
 	addCheckboxToPanel(lightPanel, "Light 1:", &((LightingScene *) scene)->light1Status, 2);
 	addCheckboxToPanel(lightPanel, "Light 2:", &((LightingScene *) scene)->light2Status, 3);
 	addCheckboxToPanel(lightPanel, "Light 3:", &((LightingScene *) scene)->light3Status, 4);
-	addCheckboxToPanel(lightPanel, "Light 4:", &((LightingScene *) scene)->light4Status, 5);
 
 	addColumn();
 
 	GLUI_Panel *clockPanel = addPanel("Clock", 1);
-	GLUI_Button* startClock = addButtonToPanel(clockPanel, "Pause/Reset Clock", 6);
+	GLUI_Button* startClock = addButtonToPanel(clockPanel, "Pause/Reset Clock", 5);
 
 	addColumn();
 
 	GLUI_Panel *robotTexturesPanel = addPanel("Robot Textures",1);
-	GLUI_Listbox *robotTextures = addListboxToPanel(robotTexturesPanel, "", &robotTexture, 7);
+	GLUI_Listbox *robotTextures = addListboxToPanel(robotTexturesPanel, "", &robotTexture, 6);
 	robotTextures->add_item(0, "Default Texture");
 	robotTextures->add_item(1, "Orange");
 	robotTextures->add_item(2, "Blue");
@@ -69,7 +68,7 @@ void TPinterface::initGUI(){
 	addColumn();
 
 	GLUI_Panel *wirePanel = addPanel("Drawing Mode", 1);
-	GLUI_RadioGroup *wireGroup = addRadioGroupToPanel(wirePanel, &wire, 8);
+	GLUI_RadioGroup *wireGroup = addRadioGroupToPanel(wirePanel, &wire, 7);
 	GLUI_RadioButton *wireButton = addRadioButtonToGroup(wireGroup, "Textured");
 	GLUI_RadioButton *wireButton2 = addRadioButtonToGroup(wireGroup, "WireFrame");
 
@@ -80,17 +79,17 @@ void TPinterface::processGUI(GLUI_Control *ctrl)
 	printf ("GUI control id: %d\n  ",ctrl->user_id);
 	switch (ctrl->user_id)
 	{
-	case 6:
+	case 5:
 		{
 			((LightingScene*) scene)->clockStatus = !((LightingScene*)scene)->clockStatus;
 			break;
 		}
-	case 7:
+	case 6:
 		{
 			((LightingScene*) scene)->robotTexture=robotTexture;
 			break;
 		}
-	case 8:
+	case 7:
 		{
 			((LightingScene*) scene)->wireframe=wire;
 			break;

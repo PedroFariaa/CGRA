@@ -80,7 +80,6 @@ void LightingScene::init(){
 	light1Status = 0;
 	light2Status = 0;
 	light3Status = 0;
-	light4Status = 0;
 	clockStatus = true;
 	robotTexture = 0;
 	wireframe = 0;
@@ -128,14 +127,14 @@ void LightingScene::init(){
 
 	//light3->disable();
 	//light3->enable();
-
+/*
 	light4 = new CGFlight(GL_LIGHT4, light4_pos);
 	light4->setAmbient(ambientNull);
 	light4->setSpecular(yellow);
 	light4->setKc(0.0);
 	light4->setKl(0.0);
 	light4->setKq(1.0);
-
+*/
 	//light4->disable();
 	//light4->enable();
 
@@ -218,11 +217,6 @@ void LightingScene::display(){
 	}else{
 		light3->enable();
 	}
-	if(light4Status==0){
-		light4->disable();
-	}else{
-		light4->enable();
-	}
 
 	if(robotTexture==0){
 		robotAppearance->setTexture("robot1.jpg");
@@ -240,7 +234,7 @@ void LightingScene::display(){
 	light1->draw();
 	light2->draw();
 	light3->draw();
-	light4->draw();
+	//light4->draw();
 
 	// Draw axis
 	axis.draw();
@@ -304,43 +298,10 @@ void LightingScene::display(){
 	wall->draw();
 	glPopMatrix();
 
-	//LeftWall
-	/*
-	glPushMatrix();
+	//Desenha a parede com buraco
 	windowAppearance->apply();
-	glTranslated(0,4,7.5);
-	glRotated(-90.0,0,0,1);
-	glScaled(8,0.2,15);
-	glRotated(90, 0, 1, 0);
-	wall->draw();
-	glPopMatrix();
-	*/
-
-	//window
-	/*
 	glPushMatrix();
-	windowAppearance->apply();
-	glTranslated(0,4,7.5);
-	//glRotated(-90.0,0,0,1);
-	glScaled(8,0.2,15);
-	//glRotated(90, 0, 1, 0);
-	window->draw();
-	glPopMatrix();
-	*/
-
-	//Desenha o buraco tapado
-	windowAppearance->apply();
-	/*
-	glPushMatrix();
-	windowAppearance->apply();
-	glTranslated(0,4,7.5);
-	glRotated(-90.0,0,0,1);
-	glScaled(8/3,0.2,15/3);
-	glRotated(90, 0, 1, 0);
-	wall->draw();
-	glPopMatrix();
-	*/
-	glPushMatrix();
+	glScaled(1, 8.0/3, 15/3);
 	window->draw();
 	glPopMatrix();
 	
@@ -371,22 +332,23 @@ void LightingScene::display(){
 	floor->draw();
 	glPopMatrix();
 
+	
+	//impostor
+	glPushMatrix();
+	glTranslated(-8,0,0);
+	glTranslated(0,4,7.5);
+	glRotated(-90,0,0,1);
+	glScaled(20,0.2,35);
+	glRotated(90, 0, 1, 0);
+	impostorAppearance->apply();
+	impostor->draw();
+	glPopMatrix();
+
 	// clock
 	glPushMatrix();
 	glTranslated(7.25, 7.5, 0);
 	clockAppearance->apply();
 	clock->draw();
-	glPopMatrix();
-
-	//impostor
-	glPushMatrix();
-	glTranslated(-12,0,0);
-	glTranslated(0,4,7.5);
-	glRotated(-90,0,0,1);
-	glScaled(12,0.2,20);
-	glRotated(90, 0, 1, 0);
-	impostorAppearance->apply();
-	impostor->draw();
 	glPopMatrix();
 
 	// ---- END Primitive drawing section

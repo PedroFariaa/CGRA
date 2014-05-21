@@ -6,7 +6,7 @@ class Window
 {
 public:
 	Window();
-	void drawSquare(double i, double j);
+	void drawSquare();
 	void draw();
 private:
 };
