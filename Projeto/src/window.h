@@ -6,7 +6,6 @@ class Window
 {
 public:
 	Window();
-	void drawSquare();
 	void draw();
 private:
 };

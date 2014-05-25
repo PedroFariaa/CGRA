@@ -284,10 +284,12 @@ void LightingScene::display(){
 	glPopMatrix();
 
 	//Second Table
+	/*
 	glPushMatrix();
 	glTranslated(12,0,8);
 	table->draw();
 	glPopMatrix();
+	*/
 
 	//PlaneWall
 	wallAppearance->apply();
